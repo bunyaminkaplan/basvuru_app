@@ -54,7 +54,7 @@ def yeni_basvuru (request):
 
 def admin_bekleyenler (request):
     try:
-        if is_logged_in:
+        if is_logged_in and is_current_user_staff:
             if request.method == 'POST':
                 basvuru_id = request.POST.get('id')
                 guncel_basvuru = models.basvuru_details.objects.get(id = basvuru_id)
@@ -82,7 +82,7 @@ def admin_bekleyenler (request):
 
 def admin_onaylananlar (request):
     try:
-        if is_logged_in:
+        if is_logged_in and is_current_user_staff:
             basvurular = models.basvuru_details.objects.filter(onay = True).all()
             return render(request , 'basvuru_app/admin_onaylananlar.html' , context= {'basvurular' : basvurular})
         else: 
@@ -136,6 +136,7 @@ def login_control(request):
             global is_logged_in 
             is_logged_in = True
             print('logged info' ,is_logged_in)
+            global is_current_user_staff
             is_current_user_staff = User.objects.get(username = current_username).is_staff
             if is_current_user_staff:
 
