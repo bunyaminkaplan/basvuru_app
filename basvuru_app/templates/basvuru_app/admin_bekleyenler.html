@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="second_main_container" >
+    <div class="sidebar">
+        <a href="admin_onaylananlar"> 
+            <button class="onaylananlar_buton button_style"> Onaylananlar </button>
+        </a>     
+        <br>
+        <a href="admin_bekleyenler" >
+            <button class="bekleyenler_buton button_style"> Bekleyenler</button>
+        </a>
+    </div>
+    <div class="basvuru_form_genel_class">   
+        {% for basvuru in basvurular%}
+        
+            <div class="basvuru_form">
+                
+                <label for="basvuru_sahibi"> Basvuru Sahibi: </label>
+                <input readonly="true" id="basvuru_sahibi" name="basvuru_sahibi" value="{{basvuru.basvuru_sahibi}}" class="basvuru_sahibi input_style"> 
+                <br>
+                <label for="pasaport_turu"> Talep Edilen Pasaport Turu </label>
+                <input readonly="true" id="pasaport_turu" name="pasaport_turu" value="{{basvuru.pasaport_turu}}" class="pasaport_turu input_style"> 
+                <br>
+                <label for="tc_no"> T.C No </label>
+                <input readonly="true" id="tc_no" name="tc_no" type="number" value="{{basvuru.tc_no}}" class="tc_no input_style"> 
+                <br>
+                <label for="isim_soyisim"> Isim Soyisim </label>
+                <input readonly="true" type="text" name="isim_soyisim" value="{{basvuru.isim_soyisim}}" class="isim_soyisim input_style"> 
+                <br>
+                <label for="kadro_unvani"> Kadron Unvani </label>
+                <input readonly="true" type="text" name="kadro_unvani" value="{{basvuru.kadro_unvani}}" class="kadro_unvani input_style"> 
+                <br>    
+                <label for="kurum_sicil_no"> Kurum Sicil No </label>
+                <input readonly="true" type="number" name="kurum_sicil_no" value="{{basvuru.kurum_sicil_no}}" class="kurum_sicil_no input_style"> 
+                <br>
+                <label for="tel_no"> Telefon No </label>
+                <input readonly="true" type="number" name="tel_no" value="{{basvuru.tel_no}}" class="tel_no input_style"> 
+                <br>
+                <label for="mail"> E-Posta Adresi </label>
+                <input readonly="true" type="email" name="mail" value="{{basvuru.email}}" class="mail input_style"> 
+                <br>
+                <label for="nufus_mudurlugu"> Istediginiz Nufus Mudurlugu </label>
+                <input readonly="true" type="text" name="nufus_mudurlugu" value="{{basvuru.nufus_mudurluk}}" class="nufus_mudurlugu input_style"> 
+                <br>
+                <label for="kimlik_fotokopi">Kimlik Fotokopisi</label>
+                <input required="false" disabled="true" type="file" name="kimlik_fotokopi" value="{{basvuru.kimlik_fotokopi}}" class="kimlik_fotokopi button_style">
+                <br>
+                <label for="es_kimlik_fotokopi">Kimlik Fotokopisi (Es)</label>
+                <input required='false' disabled="true" type="file" name="es_kimlik_fotokopi" value="{{basvuru.es_kimlik_fotokopi}}" class="es_kimlik_fotokopi button_style ">
+                <br>
+                <label for="cocuk_sayisi"> Cocuk Sayisi</label>
+                <input readonly="true" type="number" name="cocuk_sayisi" value="{{basvuru.cocuk_sayisi}}" class="cocuk_sayisi input_style">
+                <br>
+                <div class="form_buton" style="display: flex;">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <button class="onayla_buton button_style" type="submit" name="onay"> Onayla  </button>
+                        <label for="gerekce" style="margin: 13px;"> Gerekce </label>
+                        {% if basvuru.gerekce %}
+                            <input type="text" name="gerekce" class="gerekce input_style" value="{{basvuru.gerekce}}">
+                        {% else %}
+                            <input type="text" name="gerekce" class="gerekce input_style" value=" ">
+                        {% endif%}
+                        <input type="text" hidden= 'true' id="id" name="id" value="{{basvuru.id}}">
+                        <button class="red_buton button_style" type="submit" name="red"> Red </button>
+                    </form>
+                </div>
+            </div>
+        {%endfor%}
+    </div>    
+</div>
+
+{% endblock %}

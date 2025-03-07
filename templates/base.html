@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basvuru Sistemi</title>
+    <link rel="stylesheet" href="{% static 'basvuru_app/ayarlar.css' %}">
+</head>
+<body class="hot">
+    
+    <div class="main_container">
+        <div class="second_container" style="display:flex">
+           <img src="https://ozal.edu.tr/front/images/mt%C3%BC-logo.png" alt="logo" class="logo" style="width: 10%; height: 10%; padding-left: 50px;">
+           <!--  <img src="https://png.pngtree.com/element_our/png/20180918/simple-v-logo-design-png_100141.jpg" alt="logo" class="logo" style="width: 10%; height: 10%; padding-left: 50px;">-->
+
+            <div class="third_container" style="display: block;">
+                <h2> MALATYA TURGUT ÖZAL ÜNİVERSİTESİ </h2>
+                <h3> BILGI YONETIM SISTEMI</h3>
+                <h4> (Kullanmak istediginiz otomasyonun logosuna veya yazisina tiklayarak giris ekranina ulasabilirsiniz...) </h4>
+            
+            </div>
+            <div class="logout_buton_container">
+                <form method="post" action="{% url 'logout' %}?next=/giris">
+                    {% csrf_token %}
+                    <button type="submit" class="signout_button button_style"> Cikis </button>   
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
+

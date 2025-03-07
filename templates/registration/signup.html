@@ -1,0 +1,46 @@
+
+{% load static%}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'basvuru_app/ayarlar.css' %}">
+    <title>Register Page</title>
+</head>
+<body style="background-color: FCF7FF;">
+    
+    
+    <div class="img_container">
+        <img src="https://ozal.edu.tr/front/images/mt%C3%BC-logo.png" alt="logo" class="background_logo">
+        <div class="signup_page_container">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <label for="id_username"> Username </label>
+                <input type="text" id="id_username" name="username" class="input_style">
+                <br>
+                <label for="id_password1"> Password </label>
+                <input type="text" id="id_password1" name="password1" class="input_style">
+                <br>
+                <label for="id_password2"> Password Confirmation </label>
+                <input type="text" id="id_password2" name="password2" class="input_style">
+                <br>
+                <button type="submit" class="button_style" style= " padding: 5px ;">Signup</button>
+            </form>
+            <a href="/giris">
+                <button class="button_style" style="padding: 5px;">or Login</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
+    
+
+
+   
+
+
+{% endblock %}

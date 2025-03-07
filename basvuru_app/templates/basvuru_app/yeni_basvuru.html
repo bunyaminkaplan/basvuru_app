@@ -1,0 +1,63 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+
+    <div class="second_main_container" style="display: flex;">
+        <div class="sidebar">
+            <a href="basvurularim">
+                <button class="basvurularim_buton button_style"> Basvurularim </button>
+            </a>
+            <br>
+            <a href="yeni_basvuru">
+                <button class="yeni_basvuru_buton button_style"> Yeni Basvuru</button>
+            </a>
+        </div>
+        <div class="basvuru_form" style="display: block;">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input hidden= "True" value="{{user.id}}" name="current_user">
+                <label for="pasaport_turu"> Talep Edilen Pasaport Turu </label>
+                
+                <select id="pasaport_turu" class="input_style" style="padding: 3px;" required="true" name="pasaport_turu">  
+                    <option> a pasaport </option>
+                    <option> b pasaport </option>
+                </select>
+                <br>
+                <label for="tc_no"> T.C No </label>
+                <input id="tc_no" name="tc_no" type="number" class="tc_no input_style"> 
+                <br>
+                <label for="isim_soyisim"> Isim Soyisim </label>
+                <input type="text" name="isim_soyisim" class="isim_soyisim input_style"> 
+                <br>
+                <label for="kadro_unvani"> Kadron Unvani </label>
+                <input type="text" name="kadro_unvani" class="kadro_unvani input_style"> 
+                <br>    
+                <label for="kurum_sicil_no"> Kurum Sicil No </label>
+                <input type="number" name="kurum_sicil_no" class="kurum_sicil_no input_style"> 
+                <br>
+                <label for="tel_no"> Telefon No </label>
+                <input type="number" name="tel_no" class="tel_no input_style"> 
+                <br>
+                <label for="mail"> E-Posta Adresi </label>
+                <input type="email" name="mail" class="mail input_style"> 
+                <br>
+                <label for="nufus_mudurlugu"> Istediginiz Nufus Mudurlugu </label>
+                <input type="text" name="nufus_mudurlugu" class="nufus_mudurlugu input_style"> 
+                <br>
+                <label for="kimlik_fotokopi">Kimlik Fotokopisi</label>
+                <input type="file" name="kimlik_fotokopi" class="kimlik_fotokopi button_style">
+                <br>
+                <label for="es_kimlik_fotokopi">Kimlik Fotokopisi (Es)</label>
+                <input type="file" name="es_kimlik_fotokopi" class="es_kimlik_fotokopi button_style ">
+                <br>
+                <label for="cocuk_sayisi"> Cocuk Sayisi</label>
+                <input type="number" name="cocuk_sayisi" class="cocuk_sayisi input_style">
+                <br>
+                <button type="submit" class="basvur_buton button_style"> Basvur </button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
