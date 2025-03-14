@@ -42,8 +42,6 @@ def yeni_basvuru (request):
                     basvuru_sahibi = current_username
                     )
                 temp_model.save()
-            
-                basvurular = models.basvuru_details.objects.all()
                 
             return render(request, 'basvuru_app/yeni_basvuru.html')
         else:
